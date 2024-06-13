@@ -16,7 +16,7 @@ export const Hero = () => {
         </span>
       </ShimmerButton>
       <p className="z-10 mt-10 mb-6 whitespace-pre-wrap md:max-w-3xl max-w-lg text-center md:text-6xl text-3xl font-extrabold tracking-wider  text-white">
-      Track Your DSA Journey in with us </p>
+      Track Your DSA Journey with us </p>
       <AnimatedGridPattern
         numSquares={90}
         maxOpacity={0.5}
