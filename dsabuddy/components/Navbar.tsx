@@ -10,33 +10,31 @@ const Navbar =  () => {
   return (
     <nav className="flex relative z-10  shadow-lg items-center justify-around h-16 px-4 md:px-6 bg-[#07070b]">
       <Link className="flex items-center gap-2" href="#">
-        <Image src="/logo.png" alt='Sieve' width={150} height={150}/>
+        <Image src="/logo.png" alt='DSABuddy' width={150} height={150}/>
        
       </Link>
       <nav className="md:flex md:items-center hidden gap-6 ">
         <Link className="text-white hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
           Home
         </Link>
-        <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="/playlist">
+        <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
           Track
         </Link>
       
-             <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="/signup">
+             <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
           Sheets
         </Link>
-        <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="/login">
+        <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
           Roadmap
         </Link>
             
       </nav>
       <nav className="md:flex md:items-center hidden gap-6 ">
       
-             <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="/signup">
+             <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
           Login
         </Link>
-        {/* <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="/login">
-          Get Started
-        </Link> */}
+       
          <button className="group/button relative inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded-full
           bg-gradient-to-r from-[#3B82F6] to-[#2563EB] font-medium text-white transition-all duration-300 hover:w-28">
       <p className="inline-flex whitespace-nowrap text-xs opacity-0 transition-all duration-200 group-hover/button:-translate-x-2.5 group-hover/button:opacity-100">
