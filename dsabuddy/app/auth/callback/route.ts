@@ -9,8 +9,8 @@ export async function GET(request: Request) {
   
   const code = searchParams.get('code')
   // if "next" is in param, use it as the redirect URL
-  const next = process.env.NEXT_PUBLIC_PROD + (searchParams.get('next') ?? '/')
-
+//   const next = process.env.NEXT_PUBLIC_PROD + (searchParams.get('next') ?? '/')
+const next = 'https://dsabuddy.vercel.app/';
   if (code) {
     const cookieStore = cookies()
     const supabase = createServerClient(
