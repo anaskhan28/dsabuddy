@@ -50,7 +50,7 @@ const Footer = () => {
           <div className="mt-16 grid grid-cols-2 gap-14 md:grid-cols-2 lg:mt-0 xl:col-span-2">
             <div className="md:mt-0">
               <h3 className="text-sm font-semibold leading-6 text-gray-900  dark:text-gray-200">
-                Support
+              Product
               </h3>
               <div className="mt-6 space-y-4">
                 {navigation.connect.map((item) => (
@@ -70,7 +70,7 @@ const Footer = () => {
             <div>
               <div>
                 <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200">
-                  Product
+                  Support
                 </h3>
                 <div className="mt-6 space-y-4">
                   {navigation.company.map((item) => (
