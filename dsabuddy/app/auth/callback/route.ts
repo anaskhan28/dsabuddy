@@ -9,7 +9,7 @@ export async function GET(request: Request) {
   
   const code = searchParams.get('code')
   // if "next" is in param, use it as the redirect URL
-  const next = process.env.PROD + (searchParams.get('next') ?? '/')
+  const next = process.env.NEXT_PUBLIC_PROD + (searchParams.get('next') ?? '/')
 
   if (code) {
     const cookieStore = cookies()
