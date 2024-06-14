@@ -2,9 +2,49 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import useSupabaseClient from '@/utils/supabase/client';
+import {User} from '@supabase/supabase-js'
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
 
 const Navbar =  () => {
-
+  const [user, setUser] = useState<User>();
+  const [isMounted, setIsMounted] = useState(false);
+  const supabase = useSupabaseClient();
+  
+  
+  const handleSignout = async () =>{
+    const {error} = await supabase.auth.signOut();
+    if(!error) setUser(undefined)
+  }
+  
+  
+  
+  
+  
+   useEffect(() =>{
+    const getCurrentUser = async() =>{
+      const {data: {session},} = await supabase.auth.getSession();
+      
+      if(session){
+        setUser(session.user)
+      }
+    };
+    getCurrentUser();
+   
+    setIsMounted(true);
+  
+    // console.log(user, 'userdata')
+  
+   }, []);
+  
+   if(!isMounted) return null
+   console.log(user?.user_metadata?.avatar_url, 'userdata')
+  
+  
 
 
   return (
@@ -17,29 +57,36 @@ const Navbar =  () => {
         <Link className="text-white hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
           Home
         </Link>
-        <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
+        <Link
+         className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200"
+          href="/track">
           Track
         </Link>
       
-             <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
+             <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" 
+             href="/track">
           Sheets
         </Link>
-        <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
+        <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200"
+         href="/track">
           Roadmap
         </Link>
             
       </nav>
       <nav className="md:flex md:items-center hidden gap-6 ">
       
-             <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
+          {!user && (<>
+            <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="/login">
           Login
         </Link>
        
          <button className="group/button relative inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded-full
           bg-gradient-to-r from-[#3B82F6] to-[#2563EB] font-medium text-white transition-all duration-300 hover:w-28">
+      <Link href='/signup'>
       <p className="inline-flex whitespace-nowrap text-xs opacity-0 transition-all duration-200 group-hover/button:-translate-x-2.5 group-hover/button:opacity-100">
         Get Started
       </p>
+      </Link>
       <div className="absolute right-1.5">
         <svg
           viewBox="0 0 15 15"
@@ -50,6 +97,20 @@ const Navbar =  () => {
         </svg>
       </div>
     </button>
+          </>)}
+
+    { user && (
+            <>
+ <button className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" onClick={handleSignout}>
+            Logout
+        </button>
+        <Avatar>
+      <AvatarImage src={user.user_metadata.avatar_url}alt="profile" />
+      <AvatarFallback>User Profile</AvatarFallback>
+    </Avatar>
+   
+        </>
+           )}
             
       </nav>
     </nav>

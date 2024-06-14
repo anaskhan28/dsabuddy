@@ -5,6 +5,7 @@ import AnimatedGridPattern from "@/components/ui/animated-grid-pattern";
 import { Button } from "./ui/button";
 import ShimmerButton from "./ui/shimmer-button";
 import { HeroScroll } from "./ScrollCard";
+import Link from "next/link";
 export const Hero = () => {
   return (
     <>
@@ -35,10 +36,14 @@ Track, maintain, and streamline every aspect
 of your DSA with DSABuddy </p>
 
 <div className="flex gap-8 justify-center items-center mt-8">
+  <Link href="/signup">
 <button className=" animate-buttonheartbeat rounded-md bg-gradient-to-r from-[#3B82F6] to-[#2563EB] px-6 py-2 text-sm font-semibold text-white">
         Get Started
       </button>
-    <Button variant="outline" className="px-6 py-2">Learn More</Button>
+      </Link>
+      <Link href="/signup">
+      <Button variant="outline" className="px-6 py-2">Learn More</Button>
+      </Link>
 </div>
     </div>
 
