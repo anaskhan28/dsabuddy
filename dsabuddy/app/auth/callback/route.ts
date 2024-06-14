@@ -3,14 +3,11 @@ import { NextResponse } from 'next/server'
 import { type CookieOptions, createServerClient } from '@supabase/ssr'
 
 export async function GET(request: Request) {
-
-
   const { searchParams, origin } = new URL(request.url)
-  
   const code = searchParams.get('code')
   // if "next" is in param, use it as the redirect URL
-//   const next = process.env.NEXT_PUBLIC_PROD + (searchParams.get('next') ?? '/')
-const next = 'https://dsabuddy.vercel.app/';
+  const next = searchParams.get('next') ?? '/'
+
   if (code) {
     const cookieStore = cookies()
     const supabase = createServerClient(
@@ -31,9 +28,8 @@ const next = 'https://dsabuddy.vercel.app/';
       }
     )
     const { error } = await supabase.auth.exchangeCodeForSession(code)
-    console.log(error);
     if (!error) {
-      return NextResponse.redirect(`${next}`)
+      return NextResponse.redirect(`${origin}${next}`)
     }
   }
 
