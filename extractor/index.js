@@ -129,7 +129,7 @@ async function hackerrank(link){
             let site = "hackerrank"
             let title = ""
 
-            let difficulty = []
+            let difficultyy = []
             let tags = []  // ### AI
             let descriptions = ""
             console.log("here")
@@ -138,20 +138,28 @@ async function hackerrank(link){
             })
 
             $('.pull-right', html).each(function () {
-                difficulty.push($(this).text())
+                difficultyy.push($(this).text())
             })
 
             $('.challenge_problem_statement_body > div:nth-child(1) > p:nth-child(3)', html).each(function () {
                 descriptions = $(this).text().replace(/\s+/g, ' ').trim()
             })
 
-            let difficult = difficulty[1]
 
-            results.push({site, title, difficult, descriptions})
+            let difficulty = difficultyy[1]
+
+            results.push({site, title, difficulty, descriptions, tags})
 
             console.log(title)
             return results
         }).catch(err => console.log(err))
+    let example = "It sholud be in this format example: [ 'Trees', 'Algorithm', 'Maths' ]"
+    let context = "I should be max 3 tags, and should match the format and realted to DSA programming only"
+    prompt = "Title: " +  results[0].title  + " Description: " + results[0].descriptions + " \n Rules: "  + context + " Example: " + example + "Format: JSON"
+    let tg = await gpt4o(prompt)
+    tg.replace(/[\[\]']+/g, '').split(', ')
+    // console.log("Tags ===> ", tg.replace('\n', '').replace('\\',''))
+    resp[0].tags = tg.replace('/\\/g', '')
     return resp;
 
 }
@@ -166,7 +174,7 @@ async function gpt4o(prompt) {
         "Accept-Language": "de,en-US;q=0.7,en;q=0.3",
         "Accept-Encoding": "gzip, deflate, br",
         "Referer": `${url}/chat`,
-        "Flag-Real-Time-Data": "false",
+        "Flag-Real-Time-Data": "true",
         "Visitor-ID": uuidv4().replace(/-/g, '').substring(0, 20),
         "Origin": url,
         "Alt-Used": "koala.sh",
@@ -177,7 +185,7 @@ async function gpt4o(prompt) {
     };
     messages=[{
         "role": "user",
-        "content": prompt.replace('_', ' ')
+        "content": prompt
         // "content": "Find me top DSA questions from leetcode that ask in Amazon interview repeatedly, provide me the urls for same"
     }]
 
@@ -198,8 +206,7 @@ async function gpt4o(prompt) {
 
         const chunks = response.data.split('\n').filter(chunk => chunk.startsWith("data: "));
         const parsedChunks = chunks.map(chunk => JSON.parse(chunk.slice(6)));
-        const result = parsedChunks.join('').replace(/\\n/g, '\n');
-        console.log(result)
+        const result = parsedChunks.join('').replace(/\\n/g, '\n').replace('\\','');
         // const result = parsedChunks.join('').replace(/\n/g, ''); // Join chunks and remove newline characters
 
         return result
@@ -217,7 +224,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/gpt4o', async function(req, res){
-    const prompt = req.query.prompt.replace(' ', '_')
+    const prompt = req.query.prompt.replace('%20', ' ')
     const result = await gpt4o(prompt)
     res.json(result)
 })
