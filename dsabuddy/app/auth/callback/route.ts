@@ -3,10 +3,13 @@ import { NextResponse } from 'next/server'
 import { type CookieOptions, createServerClient } from '@supabase/ssr'
 
 export async function GET(request: Request) {
+
+
   const { searchParams, origin } = new URL(request.url)
+  
   const code = searchParams.get('code')
   // if "next" is in param, use it as the redirect URL
-  const next = searchParams.get('next') ?? '/'
+  const next = process.env.PROD + (searchParams.get('next') ?? '/')
 
   if (code) {
     const cookieStore = cookies()
@@ -30,7 +33,7 @@ export async function GET(request: Request) {
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     console.log(error);
     if (!error) {
-      return NextResponse.redirect(`${origin}`)
+      return NextResponse.redirect(`${next}`)
     }
   }
 

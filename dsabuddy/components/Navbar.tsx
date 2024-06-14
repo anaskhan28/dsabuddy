@@ -39,7 +39,7 @@ const Navbar =  () => {
   
     // console.log(user, 'userdata')
   
-   }, []);
+   }, [supabase.auth]);
   
    if(!isMounted) return null
    console.log(user?.user_metadata?.avatar_url, 'userdata')
