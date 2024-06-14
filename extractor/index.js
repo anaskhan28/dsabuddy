@@ -177,7 +177,7 @@ async function gpt4o(prompt) {
     };
     messages=[{
         "role": "user",
-        "content": prompt
+        "content": prompt.replace('_', ' ')
         // "content": "Find me top DSA questions from leetcode that ask in Amazon interview repeatedly, provide me the urls for same"
     }]
 
@@ -217,7 +217,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/gpt4o', async function(req, res){
-    const prompt = req.query.prompt
+    const prompt = req.query.prompt.replace(' ', '_')
     const result = await gpt4o(prompt)
     res.json(result)
 })
