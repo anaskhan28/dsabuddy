@@ -164,6 +164,13 @@ async function hackerrank(link){
 
 }
 
+// async function make_suggestions(link){
+
+//     let context = "Generate suggestions sums based on the following sum: " + link
+//     let result = await gpt4o(context)
+//     return result
+// }
+
 
 async function gpt4o(prompt) {
     url = "https://koala.sh"
@@ -218,6 +225,12 @@ async function gpt4o(prompt) {
 }
 
 
+
+app.get('/suggest', async function (req, res) {
+    result =  await make_suggestions(req.query.link)
+    return res.json(result)
+    
+})
 
 app.get('/', function (req, res) {
 	res.json('hello, it works')
