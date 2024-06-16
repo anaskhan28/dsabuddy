@@ -46,43 +46,41 @@ const SideNavbar = () => {
     return (
         <div className="relative">
             <button
-                className="md:hidden text-black p-4"
+                className="md:hidden text-white p-4"
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
                 <FiMenu />
             </button>
-            <div className={`md:flex flex-col md:fixed top-0 left-0 w-full md:w-64 bg-white transition-transform transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 min-h-screen`}>
+            <div className={`md:flex flex-col md:fixed top-0 left-0 w-full md:w-64 bg-black transition-transform transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 min-h-screen`}>
                 <div className="flex items-center justify-between p-4 border-b border-black border-opacity-20">
                     <Link href="/" className="flex items-center">
                         <Image src="/logo.png" alt="Logo" width={150} height={150} />
-
                     </Link>
-                    <button className="md:hidden text-black" onClick={() => setIsSidebarOpen(false)}>
+                    <button className="md:hidden text-white" onClick={() => setIsSidebarOpen(false)}>
                         <FiMenu />
                     </button>
                 </div>
                 <nav className="flex-1 px-2 py-4 space-y-1">
-                    <Link href="/" className="flex items-center px-4 py-4 text-lg font-semibold text-black rounded-md hover:bg-gray-200">
+                    <Link href="/" className="flex items-center px-4 py-4 text-lg font-semibold text-white rounded-md hover:bg-gray-800">
                         <IoHomeSharp className="mr-3 h-6 w-6" />
                         Home
                     </Link>
-                    <Link href="/track" className="flex items-center px-4 py-4 text-lg font-semibold text-black rounded-md hover:bg-gray-200">
+                    <Link href="/track" className="flex items-center px-4 py-4 text-lg font-semibold text-white rounded-md hover:bg-gray-800">
                         <CgTrack className="mr-3 h-6 w-6" />
                         Track
                     </Link>
-                    <Link href="/progress" className="flex items-center px-4 py-4 text-lg font-semibold text-black rounded-md hover:bg-gray-200">
+                    <Link href="/progress" className="flex items-center px-4 py-4 text-lg font-semibold text-white rounded-md hover:bg-gray-800">
                         <SiGooglesheets className="mr-3 h-6 w-6" />
                         Progress
                     </Link>
-                    <Link href="/map" className="flex items-center px-4 py-4 text-lg font-semibold text-black rounded-md hover:bg-gray-200">
+                    <Link href="/map" className="flex items-center px-4 py-4 text-lg font-semibold text-white rounded-md hover:bg-gray-800">
                         <RiMapFill className="mr-3 h-6 w-6" />
                         Roadmap
                     </Link>
-                    <Link href="/preferences" className="flex items-center px-4 py-4 text-lg font-semibold text-black rounded-md hover:bg-gray-200">
+                    <Link href="/preferences" className="flex items-center px-4 py-4 text-lg font-semibold text-white rounded-md hover:bg-gray-800">
                         Preferences
                     </Link>
                 </nav>
-
             </div>
         </div>
     );
