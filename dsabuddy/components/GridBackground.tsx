@@ -42,7 +42,7 @@ of your DSA with DSABuddy </p>
       </button>
       </Link>
       <Link href="/signup">
-      <Button variant="outline" className="px-6 py-2">Learn More</Button>
+      <Button variant="outline" className="px-6 py-2 text-white">Learn More</Button>
       </Link>
 </div>
     </div>

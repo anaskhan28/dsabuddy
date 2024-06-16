@@ -69,9 +69,9 @@ const SideNavbar = () => {
                         <CgTrack className="mr-3 h-6 w-6" />
                         Track
                     </Link>
-                    <Link href="/progress" className="flex items-center px-4 py-4 text-lg font-semibold text-white rounded-md hover:bg-gray-800">
+                    <Link href="/chat" className="flex items-center px-4 py-4 text-lg font-semibold text-white rounded-md hover:bg-gray-800">
                         <SiGooglesheets className="mr-3 h-6 w-6" />
-                        Progress
+                        Chat
                     </Link>
                     <Link href="/roadmap" className="flex items-center px-4 py-4 text-lg font-semibold text-white rounded-md hover:bg-gray-800">
                         <RiMapFill className="mr-3 h-6 w-6" />
