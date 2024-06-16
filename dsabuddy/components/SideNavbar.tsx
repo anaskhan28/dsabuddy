@@ -73,7 +73,7 @@ const SideNavbar = () => {
                         <SiGooglesheets className="mr-3 h-6 w-6" />
                         Progress
                     </Link>
-                    <Link href="/map" className="flex items-center px-4 py-4 text-lg font-semibold text-white rounded-md hover:bg-gray-800">
+                    <Link href="/roadmap" className="flex items-center px-4 py-4 text-lg font-semibold text-white rounded-md hover:bg-gray-800">
                         <RiMapFill className="mr-3 h-6 w-6" />
                         Roadmap
                     </Link>
