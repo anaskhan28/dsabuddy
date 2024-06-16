@@ -88,8 +88,8 @@ const Track: React.FC = () => {
   }, [sortBy, shuffleToggle, difficultyFilter, tagFilter,selectedTopic]);
   const getUniqueTags = () => {
     const tagsSet = new Set();
-    problems.forEach(problem => {
-      problem.tags && problem.tags.forEach(tag => tagsSet.add(tag));
+    problems.forEach((problem: any) => {
+      problem.tags && problem.tags.forEach((tag: any) => tagsSet.add(tag));
     });
     return Array.from(tagsSet);
   };
@@ -200,7 +200,7 @@ const Track: React.FC = () => {
             >
               <option value="All">All</option>
               {getUniqueTags().map((tag, idx) => (
-                <option key={idx} value={tag}>{tag}</option>
+                <option key={idx} value={tag as string}>{tag as string}</option>
               ))}
             </select>
           </div>
@@ -236,7 +236,7 @@ const Track: React.FC = () => {
                         <div className="flex flex-wrap gap-1">
                           {problem?.tags && problem?.tags.slice(0, 5).map((tag: string, idx: number) => (
                             <span key={idx} className="inline-block bg-blue-100 text-blue-800 text-xs md:text-sm font-medium px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                              {tag}
+                              {tag as string}
                             </span>
                           ))}
                           {problem?.tags && problem?.tags.length > 3 && (
@@ -247,9 +247,9 @@ const Track: React.FC = () => {
                         </div>
                       </td>
                       <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm md:text-base">
-                        {problem.site === 'LeetCode' && <SiLeetcode />}
-                        {problem.site === 'Codeforces' && <SiCodeforces />}
-                        {problem.site === 'Hackerrank' && <SiHackerrank />}
+                        {problem.link === 'LeetCode' && <SiLeetcode />}
+                        {problem.link === 'Codeforces' && <SiCodeforces />}
+                        {problem.link === 'Hackerrank' && <SiHackerrank />}
                       </td>
                       <td className="px-4 md:px-6 py-4 whitespace-nowrap text-sm md:text-base">
                         <button

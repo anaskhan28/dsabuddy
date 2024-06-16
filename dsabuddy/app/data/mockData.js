@@ -1,4 +1,4 @@
-     const mockData = [
+    const mockData = [
     {
       "name": "Swap Nodes [Algo]",
       "link": "https://www.hackerrank.com/challenges/swap-nodes-algo",
