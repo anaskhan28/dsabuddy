@@ -3,7 +3,7 @@ import { GoogleGenerativeAI, Content } from "@google/generative-ai";
 import Json from '@/app/chat/strivers_leet.json'
 // IMPORTANT! Set the runtime to edge
 
-export const runtime = "edge";
+// export const runtime = "edge";
 export async function POST(req: Request, res: Response) {
   const reqBody = await req.json();
   const images: string[] = JSON.parse(reqBody.data.images);
