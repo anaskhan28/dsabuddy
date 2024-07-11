@@ -34,7 +34,7 @@ export async function GET(request: Request) {
 
     if (!error) {
         console.log(origin, next)
-      return NextResponse.redirect(`${origin}${next}`)
+      return NextResponse.redirect(`${origin}/playlist`)
     }
   }
 
